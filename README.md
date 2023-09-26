@@ -1,7 +1,6 @@
 # go-whatsup-client
 
-[![Code Quality & Tests](https://github.com/sprak3000/go-whatsup-client/actions/workflows/quality-and-tests.yml/badge.svg)](https://github.com/sprak3000/go-whatsup-client/actions/workflows/quality-and-tests.yml)
-[![Maintainability](https://api.codeclimate.com/v1/badges/f378f20d8587cd169e69/maintainability)](https://codeclimate.com/github/sprak3000/go-whatsup-client/maintainability)
+[![Code Quality & Tests](https://github.com/sprak3000/go-whatsup-client/actions/workflows/quality-and-tests.yml/badge.svg)](https://github.com/sprak3000/go-whatsup-client/actions/workflows/quality-and-tests.yml)[![Maintainability](https://api.codeclimate.com/v1/badges/f378f20d8587cd169e69/maintainability)](https://codeclimate.com/github/sprak3000/go-whatsup-client/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/f378f20d8587cd169e69/test_coverage)](https://codeclimate.com/github/sprak3000/go-whatsup-client/test_coverage)
 
 This client allows you to retrieve the status page data for various services. It currently supports the following
