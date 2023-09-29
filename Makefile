@@ -4,6 +4,10 @@ GOFILES = $(shell go list -mod vendor ./... | grep -v vendor)
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
+.PHONY: generate
+generate: ## Generate the mock client
+	@go generate -mod=mod ./...
+
 .PHONY: analyze
 analyze: lint vet test ## Run lint, vet, and test
 

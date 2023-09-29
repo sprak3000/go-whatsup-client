@@ -13,8 +13,24 @@ import (
 	"github.com/sprak3000/go-whatsup-client/statuspageio"
 )
 
+//go:generate go run -mod=mod github.com/golang/mock/mockgen -package clientmock -destination=./clientmock/client-mock.go -source=../whatsup/client.go -build_flags=-mod=mod
+
+// StatusPageClient handles the requests for status pages
+type StatusPageClient interface {
+	StatuspageIoService(serviceName, pageURL string) (status.Details, glitch.DataError)
+	Slack() (status.Details, glitch.DataError)
+}
+
+type statusPageClient struct {
+}
+
+// NewStatusPageClient creates a new StatusPageClient
+func NewStatusPageClient() StatusPageClient {
+	return &statusPageClient{}
+}
+
 // StatuspageIoService handles fetching statuspage.io style status pages
-func StatuspageIoService(serviceName, pageURL string) (status.Details, glitch.DataError) {
+func (spc *statusPageClient) StatuspageIoService(serviceName, pageURL string) (status.Details, glitch.DataError) {
 	u, err := url.Parse(pageURL)
 	sf := func(serviceName string, useTLS bool) (url.URL, error) {
 		return *u, err
@@ -24,7 +40,7 @@ func StatuspageIoService(serviceName, pageURL string) (status.Details, glitch.Da
 }
 
 // Slack handles fetching the Slack status page
-func Slack() (status.Details, glitch.DataError) {
+func (spc *statusPageClient) Slack() (status.Details, glitch.DataError) {
 	sn := slack.ServiceType
 	u, err := url.Parse("https://status.slack.com/api/v2.0.0/current")
 	sf := func(serviceName string, useTLS bool) (url.URL, error) {

@@ -29,7 +29,8 @@ import (
 )
 
 func main() {
-	v, err := whatsup.StatuspageIoService("github", "https://www.githubstatus.com/api/v2/status.json")
+	c := whatsup.NewStatusPageClient()
+	v, err := c.StatuspageIoService("github", "https://www.githubstatus.com/api/v2/status.json")
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
@@ -56,7 +57,8 @@ import (
 )
 
 func main() {
-	v, err := whatsup.Slack()
+	c := whatsup.NewStatusPageClient()
+	v, err := c.Slack()
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
